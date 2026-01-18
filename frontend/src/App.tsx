@@ -88,8 +88,18 @@ export default function App() {
                     {users.map((u) => (
                         <li key={u.id}>
                             <b>{u.name}</b> — {u.email} (id: {u.id})
+                            <button
+                                style={{ marginLeft: 12 }}
+                                onClick={async () => {
+                                    await userApi.remove(u.id);
+                                    await loadUsers();
+                                }}
+                            >
+                                Delete
+                            </button>
                         </li>
                     ))}
+
                 </ul>
             )}
         </div>
