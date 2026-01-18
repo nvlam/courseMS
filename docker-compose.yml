@@ -1,4 +1,16 @@
-FROM ubuntu:latest
-LABEL authors="nguyenvulam"
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: coursems-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: coursems
+      MYSQL_USER: coursems
+      MYSQL_PASSWORD: coursems123
+    ports:
+      - "3306:3306"
+    volumes:
+      - coursems_mysql_data:/var/lib/mysql
 
-ENTRYPOINT ["top", "-b"]
+volumes:
+  coursems_mysql_data:
